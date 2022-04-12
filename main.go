@@ -2,11 +2,15 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/messysoup/react-go-bookquotes/helpers"
+	"github.com/messysoup/react-go-bookquotes/models"
 )
+
+var book_metadata models.Books
 
 func main() {
 	// Get the metedata of available books for lookup purposes
-	get_books_metadata()
+	book_metadata = helpers.Get_books_metadata()
 
 	router := gin.Default()
 

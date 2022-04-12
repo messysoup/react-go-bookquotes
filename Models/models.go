@@ -24,3 +24,8 @@ type Cached_book struct {
 	Quote    string `json:"Quote"`
 	Content  string `json:"Content"`
 }
+
+type Author_title struct {
+	Author string
+	Title  string
+}

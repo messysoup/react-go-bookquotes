@@ -1,60 +1,67 @@
 {
-    "Books": [
-        {
-            "ID": "1",
-            "Title": "Sherlock Holmes",
-            "Author": "Conan Doyle",
-            "BookFile": "SherlockHolmes.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "2",
-            "Title": "Dracula",
-            "Author": "Bram Stoker",
-            "BookFile": "Dracula.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "3",
-            "Title": "The Great Gatsby",
-            "Author": "F. Scott Fitzgerals",
-            "BookFile": "TheGreatGatsby.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "4",
-            "Title": "Alice In Wonderland",
-            "Author": "Lewis Carrol",
-            "BookFile": "AliceInWonderland.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "5",
-            "Title": "A Tale Of Two Cities",
-            "Author": "Charles Dickens",
-            "BookFile": "ATaleOfTwoCities.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "6",
-            "Title": "Frankenstein",
-            "Author": "Mary W. Shelley",
-            "BookFile": "Frankenstein.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "7",
-            "Title": "Pride And Prejudice",
-            "Author": "Jane Austen",
-            "BookFile": "PrideAndPrejudice.txt",
-            "Quote": ""
-        },
-        {
-            "ID": "8",
-            "Title": "The Picture Of Dorian Grey",
-            "Author": "Oscar Wilde",
-            "BookFile": "ThePictureOfDorianGrey.txt",
-            "Quote": ""
-        }
-    ]
+"Books": [
+{
+"Id": "0",
+"Title": "A Tale of Two Cities",
+"Author": "Charles Dickens",
+"BookFile": "ATaleOfTwoCities.txt",
+"Quote": ""
+},
+{
+"Id": "1",
+"Title": "Alice's Adventures in Wonderland",
+"Author": "Lewis Carroll",
+"BookFile": "AliceInWonderland.txt",
+"Quote": ""
+},
+{
+"Id": "2",
+"Title": "Dracula",
+"Author": "Bram Stoker",
+"BookFile": "Dracula.txt",
+"Quote": ""
+},
+{
+"Id": "3",
+"Title": "Frankenstein",
+"Author": "Mary W. Shelley",
+"BookFile": "Frankenstein.txt",
+"Quote": ""
+},
+{
+"Id": "4",
+"Title": "Heart of Darkness",
+"Author": "Joseph Conrad",
+"BookFile": "HeartOfDarkness.txt",
+"Quote": ""
+},
+{
+"Id": "5",
+"Title": "Pride and Prejudice",
+"Author": "Jane Austen",
+"BookFile": "PrideAndPrejudice.txt",
+"Quote": ""
+},
+{
+"Id": "6",
+"Title": "The Adventures of Sherlock Holmes",
+"Author": "Arthur Conan Doyle",
+"BookFile": "SherlockHolmes.txt",
+"Quote": ""
+},
+{
+"Id": "7",
+"Title": "The Great Gatsby",
+"Author": "F. Scott Fitzgerald",
+"BookFile": "TheGreatGatsby.txt",
+"Quote": ""
+},
+{
+"Id": "8",
+"Title": "The Picture of Dorian Gray",
+"Author": "Oscar Wilde",
+"BookFile": "ThePictureOfDorianGrey.txt",
+"Quote": ""
+}
+]
 }
