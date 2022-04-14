@@ -32,6 +32,15 @@ func get_book_by_id(c *gin.Context) {
 
 }
 
+func get_number_of_books(c *gin.Context) {
+	var num_of_books models.Number_of_Books
+
+	num_of_books.BookCount = len(book_metadata.Books)
+
+	c.IndentedJSON(http.StatusOK, num_of_books)
+
+}
+
 func send_request(quote models.Book_data, err error, c *gin.Context) {
 	if err != nil {
 		c.String(http.StatusBadRequest, err.Error())

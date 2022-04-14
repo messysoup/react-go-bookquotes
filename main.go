@@ -16,6 +16,7 @@ func main() {
 
 	router.GET("/book/title/:title", get_by_book_title)
 	router.GET("/book/id/:id", get_book_by_id)
+	router.GET("/book/number_of_books", get_number_of_books)
 
 	router.Run("localhost:8080")
 

@@ -29,3 +29,7 @@ type Author_title struct {
 	Author string
 	Title  string
 }
+
+type Number_of_Books struct {
+	BookCount int
+}
