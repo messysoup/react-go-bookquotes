@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/messysoup/react-go-bookquotes/models"
 )
@@ -12,9 +13,15 @@ import (
 func Get_books_metadata() models.Books {
 
 	var book_metadata models.Books
+	var parent_dir string
 
 	wd, _ := os.Getwd()
-	parent_dir := filepath.Dir(wd)
+
+	if strings.HasSuffix(wd, "AddBooks") {
+		parent_dir = filepath.Dir(wd)
+	} else {
+		parent_dir = wd
+	}
 
 	filepath_cleaned := filepath.Join(parent_dir, "Assets", "books.json")
 
