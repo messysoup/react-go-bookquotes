@@ -1,54 +1,16 @@
-package main
+package middleware
 
 import (
-	"bufio"
 	"fmt"
 	"math/rand"
-	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/messysoup/react-go-bookquotes/models"
 )
-
-func get_by_book_title(c *gin.Context) {
-	title := c.Param("title")
-
-	quote, err := get_book_file(title, "title")
-
-	send_request(quote, err, c)
-}
-
-func get_book_by_id(c *gin.Context) {
-	id := c.Param("id")
-
-	quote, err := get_book_file(id, "id")
-
-	send_request(quote, err, c)
-
-}
-
-func get_number_of_books(c *gin.Context) {
-	var num_of_books models.Number_of_Books
-
-	num_of_books.BookCount = len(book_metadata.Books)
-
-	c.IndentedJSON(http.StatusOK, num_of_books)
-
-}
-
-func send_request(quote models.Book_data, err error, c *gin.Context) {
-	if err != nil {
-		c.String(http.StatusBadRequest, err.Error())
-		return
-	}
-
-	c.IndentedJSON(http.StatusOK, quote)
-}
 
 func get_book_file(identifier string, identifier_type string) (models.Book_data, error) {
 
@@ -88,7 +50,7 @@ func get_book_file_helper(book models.Book_data, cached models.Cached_book, err 
 
 	if err == nil {
 
-		cached.Quote = get_sentence(split_sentences(cached.Content), false)
+		cached.Quote = get_sentence(split_sentences(cached.Content))
 
 		result := transform_to_book_data(cached)
 
@@ -101,7 +63,7 @@ func get_book_file_helper(book models.Book_data, cached models.Cached_book, err 
 
 	set_cache(cached)
 
-	book.Quote = get_sentence(split_sentences(content), false)
+	book.Quote = get_sentence(split_sentences(content))
 
 	return book, nil
 }
@@ -179,40 +141,21 @@ func split_sentences(content string) [][]string {
 
 }
 
-func get_sentence(content_as_sentences [][]string, continuous bool) string {
+func get_sentence(content_as_sentences [][]string) string {
 
 	rand.Seed(time.Now().UnixNano())
 
-	if continuous {
-		for {
-			random := rand.Intn(len(content_as_sentences))
-			fmt.Println(content_as_sentences[random])
+	for {
+		random := rand.Intn(len(content_as_sentences))
 
-			consoleReader := bufio.NewReader(os.Stdin)
-			fmt.Print("Enter 'exit' to stop:  ")
-			input, _ := consoleReader.ReadString('\n')
+		sentence := content_as_sentences[random]
 
-			input = strings.ToLower(input)
-
-			if strings.HasPrefix(input, "exit") {
-				os.Exit(0)
-			}
+		if len(sentence) < 2 {
+			continue
+		} else {
+			return ensure_capitalization(string(strings.Join(sentence, " ")))
 		}
 
-	} else {
-
-		for {
-			random := rand.Intn(len(content_as_sentences))
-
-			sentence := content_as_sentences[random]
-
-			if len(sentence) < 2 {
-				continue
-			} else {
-				return ensure_capitalization(string(strings.Join(sentence, " ")))
-			}
-
-		}
 	}
 }
 
