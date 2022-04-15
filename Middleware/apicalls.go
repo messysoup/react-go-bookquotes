@@ -41,6 +41,10 @@ func Get_number_of_books(c *gin.Context) {
 
 }
 
+func Get_All_Metadata(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, book_metadata)
+}
+
 func send_request(quote models.Book_data, err error, c *gin.Context) {
 	if err != nil {
 		c.String(http.StatusBadRequest, err.Error())
