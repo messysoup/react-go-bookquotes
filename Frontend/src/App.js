@@ -1,15 +1,31 @@
+import axios from "axios";
 import { ListGroup } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import BlockQuote from "./Components/blockquote";
 
 const App = () => {
+
+	const [ numOfBooks, setNumOfBooks ] = useState(0)
+
+	const getNumOfBooks = async () => {	
+		const resp = await axios.get("/book/number_of_books")
+		setNumOfBooks(resp.data.BookCount)
+	}
+
+	useEffect(() => {
+
+		if (numOfBooks === 0) {
+			getNumOfBooks()
+		}
+	}, [])
 
 	const multiple_quotes = () => {
 
 		let arr = [];
 
 		for ( let i = 0; i < 10; i++ ) {
-			arr.push(<ListGroup.Item key={i}>
-				<BlockQuote />
+			arr.push(<ListGroup.Item key={i} >
+				<BlockQuote numofbooks={numOfBooks} />
 			</ListGroup.Item>)
 		}
 
@@ -18,14 +34,21 @@ const App = () => {
 		</div>
 	}
 
-	return (
-		<div>
-			<BlockQuote />
-			<ListGroup>
-				{multiple_quotes()}
-			</ListGroup>
-		</div>
-	)
+	if (numOfBooks === 0) {
+		return <div></div>
+	} else {
+		return (
+		
+			<div>
+				<BlockQuote numofbooks={numOfBooks}/>
+				<ListGroup>
+					{multiple_quotes()}
+				</ListGroup>
+			</div>
+		)
+	}
+
+
 }
 
 export default App;

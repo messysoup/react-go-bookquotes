@@ -6,13 +6,13 @@ import { useState, useEffect } from "react";
 
 
 
-const BlockQuote = () => {
+const BlockQuote = (props) => {
 
     const [ quote, set_quote ] = useState({})
 
-    useEffect(() =>{
-
-        const r = Math.floor(Math.random() * (8) + 1).toString()
+    useEffect(() => {
+        console.log("props", props.numofbooks)
+        const r = Math.floor(Math.random() * (props.numofbooks)).toString()
         
         axios.get("/book/id/" + r).then( res => {
             set_quote(res.data)
