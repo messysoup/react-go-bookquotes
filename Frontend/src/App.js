@@ -2,6 +2,7 @@ import axios from "axios";
 import { ListGroup } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import BlockQuote from "./Components/blockquote";
+import Search from "./Components/search";
 
 const App = () => {
 
@@ -19,20 +20,20 @@ const App = () => {
 		}
 	}, [])
 
-	const multiple_quotes = () => {
+	// const multiple_quotes = () => {
 
-		let arr = [];
+	// 	let arr = [];
 
-		for ( let i = 0; i < 10; i++ ) {
-			arr.push(<ListGroup.Item key={i} >
-				<BlockQuote numofbooks={numOfBooks} />
-			</ListGroup.Item>)
-		}
+	// 	for ( let i = 0; i < 10; i++ ) {
+	// 		arr.push(<ListGroup.Item key={i} >
+	// 			<BlockQuote numofbooks={numOfBooks} />
+	// 		</ListGroup.Item>)
+	// 	}
 
-		return <div>
-			{arr.map(quote => quote)}
-		</div>
-	}
+	// 	return <div>
+	// 		{arr.map(quote => quote)}
+	// 	</div>
+	// }
 
 	if (numOfBooks === 0) {
 		return <div></div>
@@ -41,9 +42,10 @@ const App = () => {
 		
 			<div>
 				<BlockQuote numofbooks={numOfBooks}/>
-				<ListGroup>
+				<Search searchtype="/book/title_search/"/>
+				{/* <ListGroup>
 					{multiple_quotes()}
-				</ListGroup>
+				</ListGroup> */}
 			</div>
 		)
 	}

@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/messysoup/react-go-bookquotes/helpers"
@@ -43,6 +44,13 @@ func Get_number_of_books(c *gin.Context) {
 
 func Get_All_Metadata(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, book_metadata)
+}
+
+func Get_title_search(c *gin.Context) {
+	search_string := strings.ToLower(c.Param("title_search"))
+	results := Search_book_titles(search_string)
+
+	c.IndentedJSON(http.StatusOK, results)
 }
 
 func send_request(quote models.Book_data, err error, c *gin.Context) {

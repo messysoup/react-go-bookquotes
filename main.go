@@ -14,6 +14,7 @@ func main() {
 	router.GET("/book/id/:id", middleware.Get_book_by_id)
 	router.GET("/book/number_of_books", middleware.Get_number_of_books)
 	router.GET("/book/all_book_metadata", middleware.Get_All_Metadata)
+	router.GET("/book/title_search/:title_search", middleware.Get_title_search)
 
 	router.Run("localhost:8080")
 }
