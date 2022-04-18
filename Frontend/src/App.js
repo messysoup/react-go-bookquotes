@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ListGroup } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import BlockQuote from "./Components/blockquote";
 import Search from "./Components/search";
@@ -20,32 +20,17 @@ const App = () => {
 		}
 	}, [])
 
-	// const multiple_quotes = () => {
-
-	// 	let arr = [];
-
-	// 	for ( let i = 0; i < 10; i++ ) {
-	// 		arr.push(<ListGroup.Item key={i} >
-	// 			<BlockQuote numofbooks={numOfBooks} />
-	// 		</ListGroup.Item>)
-	// 	}
-
-	// 	return <div>
-	// 		{arr.map(quote => quote)}
-	// 	</div>
-	// }
 
 	if (numOfBooks === 0) {
 		return <div></div>
+
 	} else {
 		return (
-		
 			<div>
-				<BlockQuote numofbooks={numOfBooks}/>
-				<Search searchtype="/book/title_search/"/>
-				{/* <ListGroup>
-					{multiple_quotes()}
-				</ListGroup> */}
+				<Container>
+					<BlockQuote numofbooks={numOfBooks}/>
+					<Search searchtype="/book/title_search/"/>
+				</Container>
 			</div>
 		)
 	}
