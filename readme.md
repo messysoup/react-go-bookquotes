@@ -36,10 +36,16 @@ To add new books follow the below steps:
 
 1.  Only download public domain books.
 2.  Books need to be in a `.txt` format. 
-3.  Add book under `Assets/Books`, recommended filename is the title in CamelCase.
+3.  Add book under [Assets/Books](/Assets/Books) , recommended filename is the title in CamelCase.
 4.  Ensure an Author and Title are declared on dedicated lines near the start of the file.
 5.  Once all new books are added, run `go run AddBooks/add_books.go` or `cd` into `AddBooks` and run `go run AddBooks.go`
+6.  Add Coverart (see below)
 
 ### Removing Books
 1.  Delete the book from `Assets/Books`
 2.  run `go run AddBooks/add_books.go` or `cd` into `AddBooks` and run `go run AddBooks.go`
+
+### Adding Coverart
+If you added a book, please make sure to also add coverart. A number of svg templates are available to use, please use these for consistency purposes instead of creating something completely new; the templates are under [Assets/CoverArtBlank](/Assets/CoverArtBlank).
+1.  Use an SVG editor to edit change the title and author.  I recommend Inkscape if you are not familiar with vector graphics.
+2. Export as PNG to [Assets/Coverart](/Assets/CoverArt) where the filename of the cover art matches the filename of the book without the extension.  I.e. A Tale Of Two Cities would be `ATaleOfTwoCities.txt` for the book itself and `ATaleOfTwoCities.png` for the coverart.
