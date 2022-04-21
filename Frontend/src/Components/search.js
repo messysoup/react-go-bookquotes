@@ -1,4 +1,4 @@
-import { Form, FormGroup, ListGroup } from "react-bootstrap";
+import { Button, Col, Form, FormGroup, ListGroup, Row } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 import axios from "axios";
 
@@ -9,9 +9,14 @@ const Search = (props) => {
     const [ searchValue, setSearchValue ] = useState("")
     const [ bookData, setBookData ] = useState({Books: []})
 
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            getSearchResults()
+        }
+    }
 
     const handleChange = (e) => {
-        if (e.target.value.length > 0) {
+       if (e.target.value.length > 0) {
             setSearchValue(e.target.value)
         } else {
             setSearchValue("")
@@ -43,23 +48,53 @@ const Search = (props) => {
         }
     }, [searchValue, props.searchtype])
 
+    const getSearchResults = () => {
+
+        if (searchValue !== "") {
+            axios.get(props.searchtype + searchValue).then(res => {
+                if (res.data.Books != null) {
+                    props.getsearchresults(res.data)
+                }
+            }).catch(e => {})
+        } else {
+            axios.get('book/all_book_metadata').then(res => {
+                props.getsearchresults(res.data).catch(e => {})
+            })
+        }
+
+
+        setSearchValue("")
+        setBookData({Books: []})
+    }
+
 
     const results = bookData.Books.map((value, index) => {
         return <ListGroup.Item key={index}>{value.Title}</ListGroup.Item>
     })
 
     return <div>
-        <FormGroup>
-            <Form.Control 
-                type="text" 
-                placeholder="Search by title"
-                onChange={e => handleChange(e)} 
-                value={searchValue}/>
-        </FormGroup>
-        <ListGroup>
-            {results}
-        </ListGroup>
+        <Row style={{margin: "15px 25px"}}>
+            <FormGroup>
+                <Row className="justify-content-md-center">
+                    <Col style={{maxWidth: "600px"}}>
+                        <Form.Control 
+                            onChange={e => handleChange(e)}
+                            onKeyDown={e => handleEnter(e)}
+                            placeholder="Search by title"
+                            type="text" 
+                            value={searchValue}/>
+                        <ListGroup style={{margin: "10px", maxWidth: "550px"}}>
+                            {results}
+                        </ListGroup>
+                    </Col>
+                    <Col md='auto'>
+                        <Button onClick={getSearchResults}>Search</Button>                    
+                    </Col>
+                </Row>
+            </FormGroup>
+        </Row>
     </div>
+
 }
 
 export default Search
