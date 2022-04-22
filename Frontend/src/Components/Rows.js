@@ -5,8 +5,8 @@ const Rows = (props) => {
 
     let results = <div></div>
 
-    if (Object.keys(props.searchresults).length !== 0) {
-        results = props.searchresults.Books.map((value, index) => {
+    if (props.searchresults.length !== 0) {
+        results = props.searchresults.map((value, index) => {
             return <Col style={{maxWidth: "400px"}}>
                 <BookCard books={value} />
             </Col> 
@@ -14,7 +14,7 @@ const Rows = (props) => {
     }
 
     
-    if (Object.keys(props.searchresults).length === 0) {
+    if (props.searchresults.length === 0) {
         return <div></div>
     } else {
         return <div className="row row-cols-1 rows-cols-md-3 g-4">
