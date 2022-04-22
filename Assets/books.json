@@ -2,65 +2,107 @@
 "Books": [
 {
 "Id": "0",
+"Title": "A Modest Proposal",
+"Author": "Jonathan Swift",
+"BookFile": "AModestProposal.txt",
+"Quote": ""
+},
+{
+"Id": "1",
 "Title": "A Tale of Two Cities",
 "Author": "Charles Dickens",
 "BookFile": "ATaleOfTwoCities.txt",
 "Quote": ""
 },
 {
-"Id": "1",
+"Id": "2",
 "Title": "Alice's Adventures in Wonderland",
 "Author": "Lewis Carroll",
 "BookFile": "AliceInWonderland.txt",
 "Quote": ""
 },
 {
-"Id": "2",
+"Id": "3",
 "Title": "Dracula",
 "Author": "Bram Stoker",
 "BookFile": "Dracula.txt",
 "Quote": ""
 },
 {
-"Id": "3",
+"Id": "4",
 "Title": "Frankenstein",
 "Author": "Mary W. Shelley",
 "BookFile": "Frankenstein.txt",
 "Quote": ""
 },
 {
-"Id": "4",
+"Id": "5",
+"Title": "Great Expectations",
+"Author": "Charles Dickens",
+"BookFile": "GreatExpectations.txt",
+"Quote": ""
+},
+{
+"Id": "6",
 "Title": "Heart of Darkness",
 "Author": "Joseph Conrad",
 "BookFile": "HeartOfDarkness.txt",
 "Quote": ""
 },
 {
-"Id": "5",
+"Id": "7",
+"Title": "Metamorphosis",
+"Author": "Franz Kafka",
+"BookFile": "Metamorphosis.txt",
+"Quote": ""
+},
+{
+"Id": "8",
+"Title": "Moby-Dick; or The Whale",
+"Author": "Herman Melville",
+"BookFile": "MobyDick.txt",
+"Quote": ""
+},
+{
+"Id": "9",
 "Title": "Pride and Prejudice",
 "Author": "Jane Austen",
 "BookFile": "PrideAndPrejudice.txt",
 "Quote": ""
 },
 {
-"Id": "6",
+"Id": "10",
 "Title": "The Adventures of Sherlock Holmes",
 "Author": "Arthur Conan Doyle",
 "BookFile": "SherlockHolmes.txt",
 "Quote": ""
 },
 {
-"Id": "7",
+"Id": "11",
 "Title": "The Great Gatsby",
 "Author": "F. Scott Fitzgerald",
 "BookFile": "TheGreatGatsby.txt",
 "Quote": ""
 },
 {
-"Id": "8",
+"Id": "12",
 "Title": "The Picture of Dorian Gray",
 "Author": "Oscar Wilde",
 "BookFile": "ThePictureOfDorianGray.txt",
+"Quote": ""
+},
+{
+"Id": "13",
+"Title": "The Strange Case Of Dr. Jekyll And Mr. Hyde",
+"Author": "Robert Louis Stevenson",
+"BookFile": "TheStrangeCaseOfDrJekyllAndMrHyde.txt",
+"Quote": ""
+},
+{
+"Id": "14",
+"Title": "The Yellow Wallpaper",
+"Author": "Charlotte Perkins Gilman",
+"BookFile": "TheYellowWallpaper.txt",
 "Quote": ""
 }
 ]
