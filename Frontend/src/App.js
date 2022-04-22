@@ -20,6 +20,7 @@ const App = () => {
 	}
 
 	const getSearchResults = (results) => {
+		console.log(results)
 		setSearchResults(results.Books)
 		setCurrentPage(1)
 	}
@@ -36,7 +37,6 @@ const App = () => {
 	}
 
 	const hanldePageChange = (newPage) => {
-		console.log("from app",newPage)
 		setCurrentPage(newPage)
 	}
 
@@ -44,7 +44,6 @@ const App = () => {
 		if (searchResults.length === 0){
 			return []
 		} else {
-			console.log(searchResults.slice(currentPage * resultsPerPage - resultsPerPage, currentPage * resultsPerPage))
 			return searchResults.slice(currentPage * resultsPerPage - resultsPerPage, currentPage * resultsPerPage)
 		}
 	}

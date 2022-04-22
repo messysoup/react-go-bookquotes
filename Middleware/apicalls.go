@@ -19,7 +19,7 @@ func Initialize_metadata() {
 func Get_by_book_title(c *gin.Context) {
 	title := c.Param("title")
 
-	quote, err := get_book_file(title, "title")
+	quote, err := Get_book_file(title, "title")
 
 	send_request(quote, err, c)
 }
@@ -27,7 +27,7 @@ func Get_by_book_title(c *gin.Context) {
 func Get_book_by_id(c *gin.Context) {
 	id := c.Param("id")
 
-	quote, err := get_book_file(id, "id")
+	quote, err := Get_book_file(id, "id")
 
 	send_request(quote, err, c)
 
@@ -49,6 +49,17 @@ func Get_All_Metadata(c *gin.Context) {
 func Get_title_search(c *gin.Context) {
 	search_string := strings.ToLower(c.Param("title_search"))
 	results := Search_book_titles(search_string)
+
+	c.IndentedJSON(http.StatusOK, results)
+}
+
+func Blank_search(c *gin.Context) {
+	results := book_metadata
+
+	for index, value := range results.Books {
+		book, _ := Get_book_file(value.Title, "title")
+		results.Books[index] = book
+	}
 
 	c.IndentedJSON(http.StatusOK, results)
 }

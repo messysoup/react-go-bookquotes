@@ -57,7 +57,7 @@ const Search = (props) => {
                 }
             }).catch(e => {})
         } else {
-            axios.get('book/all_book_metadata').then(res => {
+            axios.get('book/title_search/blank_search').then(res => {
                 props.getsearchresults(res.data).catch(e => {})
             })
         }

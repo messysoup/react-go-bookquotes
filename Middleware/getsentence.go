@@ -12,7 +12,7 @@ import (
 	"github.com/messysoup/react-go-bookquotes/models"
 )
 
-func get_book_file(identifier string, identifier_type string) (models.Book_data, error) {
+func Get_book_file(identifier string, identifier_type string) (models.Book_data, error) {
 
 	var default_value models.Book_data
 	default_err := fmt.Errorf("no matching book for: %q: %q", identifier_type, identifier)
