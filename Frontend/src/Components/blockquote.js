@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify';
 import { Container } from "react-bootstrap";
 import axios from 'axios';
 import { useState, useEffect } from "react";
+import italicized from '../Helpers/Italicize';
 
 
 
@@ -11,28 +12,6 @@ const BlockQuote = (props) => {
 
     const [ quote, setQuote ] = useState({})
 
-    // FIXME: Rendered with dangerouslysethtml currently.  XSS shouldn't be an issue
-    // as it is sanitized using DOMPurify directly before rendering.
-    const italicized = (q) => {
-        let result = "";
-        let currentlyItalicized = false;
-
-        console.log("quote", quote.Quote)
-
-        for (const e of q) {
-            if (e === "_" && currentlyItalicized === false) {
-                result = result + "<i>"
-                currentlyItalicized = true
-            } else if (e === "_" && currentlyItalicized) {
-                result = result + "</i>"
-                currentlyItalicized = false
-            } else {
-                result = result + e
-            }
-        }
-
-        return result
-    }
 
     const getBookData = async () => {
         const r = Math.floor(Math.random() * (props.numofbooks)).toString()

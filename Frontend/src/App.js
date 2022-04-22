@@ -5,12 +5,14 @@ import BlockQuote from "./Components/blockquote";
 import Search from "./Components/search";
 import Rows from "./Components/Rows"
 import Pages from "./Components/paging"
+import "./App.css";
 
 const App = () => {
 
 	const [ numOfBooks, setNumOfBooks ] = useState(0)
 	const [ searchResults, setSearchResults ] = useState([])
 	const [ currentPage, setCurrentPage ] = useState(1)
+	const [ numOfPages, setNumOfPages ] = useState(0)
 
 	const resultsPerPage = 5
  
@@ -20,9 +22,9 @@ const App = () => {
 	}
 
 	const getSearchResults = (results) => {
-		console.log(results)
 		setSearchResults(results.Books)
 		setCurrentPage(1)
+		setNumOfPages(Math.ceil(results.Books.length / 5))
 	}
 
 	useEffect(() => {
@@ -31,10 +33,6 @@ const App = () => {
 			getNumOfBooks()
 		}
 	}, [])
-
-	const numOfPages = () => {
-		return Math.ceil(searchResults.length / 5)
-	}
 
 	const hanldePageChange = (newPage) => {
 		setCurrentPage(newPage)
@@ -54,13 +52,16 @@ const App = () => {
 	} else {
 		return (
 			<div>
-				<Container>
+				<Container style={{minWidth: "80%"}}>
 					<BlockQuote numofbooks={numOfBooks}/>
 					<Search searchtype="/book/title_search/" getsearchresults={getSearchResults}/>
 					<div style={{padding: "20px"}}>
 						<Rows searchresults={pageSearchResults()} />
 					</div>
-					<Pages currentpage={currentPage} numofpages={numOfPages()} setcurrentpage={newPage => hanldePageChange(newPage)} />
+					<Pages currentpage={currentPage} numofpages={numOfPages} setcurrentpage={newPage => hanldePageChange(newPage)} />
+					<div className='footer'>
+						License for all books sourced from Project Gutenberg: <p style={{fontStyle: "italic"}}>This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. </p>
+					</div>
 				</Container>
 			</div>
 		)

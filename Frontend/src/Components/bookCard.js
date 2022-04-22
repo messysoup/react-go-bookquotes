@@ -1,4 +1,6 @@
 import { Card, Col, Row } from "react-bootstrap";
+import DOMPurify from "dompurify";
+import italicized from "../Helpers/Italicize";
 
 const BookCard = (props) => {
 
@@ -16,7 +18,7 @@ const BookCard = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{props.books.Title}</h5>
                     <h6 className="card-subtitle">{props.books.Author}</h6>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p style={{padding: "10px 0px 0px 0px"}} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(italicized(props.books.Quote))}} />
                     <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </Col>

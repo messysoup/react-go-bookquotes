@@ -17,7 +17,7 @@ const Paging = (props) => {
         }
 
         setPages(pages_local)
-    },[])
+    },[props.numofpages])
 
 
     const handlePageValue = (e) => {
@@ -69,12 +69,9 @@ const Paging = (props) => {
     }
 
 
-    const createPagination = pages.map((value, _) => {
+    const numberedPagination = pages.map((value, _) => {
         value = parseInt(value)
-        console.log(typeof(props.currentpage))
-
         const isActive = props.currentpage === value ? true : false
-        console.log("in map", props.currentpage)
 
         if (value === 1 ) {
             return <Pagination.Item active={isActive} onClick={e => handlePageValue(e)}>{value}</Pagination.Item>
@@ -134,7 +131,7 @@ const Paging = (props) => {
     return <div>
         <Pagination>
             {firstPrev()}
-            {createPagination}
+            {numberedPagination}
             {nextLast()}
         </Pagination>
     </div>
