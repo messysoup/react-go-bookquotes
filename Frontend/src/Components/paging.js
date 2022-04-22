@@ -90,9 +90,7 @@ const Paging = (props) => {
             setLastEllipses(true)
             return <Pagination.Ellipsis onClick={handleForwardEllipses} />
 
-        } else {
-            return <div></div>
-        }
+        } 
     })
 
     const firstPrev = () =>{
@@ -104,10 +102,7 @@ const Paging = (props) => {
                     <Pagination.First onClick={handleFirstPage} />
                     <Pagination.Prev onClick={handlePrevPage} />    
                 </Pagination>
-        } else {
-            return <div></div>
-        }
-
+        } 
     }
 
     
@@ -119,9 +114,7 @@ const Paging = (props) => {
                 <Pagination.Next onClick={handleNextPage} />
                 <Pagination.Last onClick={handleLastPage} />
             </Pagination>
-        } else {
-            return <div></div>
-        }
+        } 
     }
 
 
